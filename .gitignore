@@ -1,0 +1,105 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environments
+venv/
+env/
+ENV/
+.env
+.venv
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+nosetests.xml
+coverage.xml
+*.cover
+.mypy_cache/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Flask
+instance/
+.webassets-cache
+flask_session/
+
+# FastAPI
+.env.local
+
+# Database
+*.sqlite
+*.sqlite3
+*.db
+
+# Frontend tooling
+node_modules/
+bower_components/
+
+# Compiled frontend assets
+*.min.css
+*.min.js
+
+# Credentials
+credentials.json
+credentials.yaml
+*.pem
+*.key
+
+# Project specific
+.credentials/
+.aws/
+.azure/
+.gcp/
+temp/
+tmp/
+
+# Deployment
+.vercel
+.netlify
+
+# Local backup files
+backup/
+*.bak
+*~
+
+# Configuration that should not be in version control
+config.local.yaml
+secrets.yaml
+local_settings.py

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}PCM-Ops Tools{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{{ url_for('index') }}">PCM-Ops Tools</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.path == url_for('index') %}active{% endif %}" href="{{ url_for('index') }}">Home</a>
+                        </li>
+                        
+                        <!-- AWS Tools -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="awsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                AWS
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="awsDropdown">
+                                <li><a class="dropdown-item" href="{{ url_for('aws_auth_bp.index') }}">Credentials</a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('aws_script_runner_bp.index') }}">Script Runner</a></li>
+                            </ul>
+                        </li>
+                        
+                        <!-- Future: Azure Tools -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle disabled" href="#" id="azureDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Azure
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="azureDropdown">
+                                <li><a class="dropdown-item" href="#">Coming Soon</a></li>
+                            </ul>
+                        </li>
+                        
+                        <!-- Future: GCP Tools -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle disabled" href="#" id="gcpDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                GCP
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="gcpDropdown">
+                                <li><a class="dropdown-item" href="#">Coming Soon</a></li>
+                            </ul>
+                        </li>
+                        
+                        <!-- Future: ServiceNow Integration -->
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#">ServiceNow</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mt-4 mb-4">
+        <!-- Flash messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <!-- Main content -->
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="bg-light py-3 mt-auto">
+        <div class="container text-center">
+            <p class="text-muted mb-0">PCM-Ops Tools &copy; 2025</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
